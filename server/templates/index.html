@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="p-5 mb-4 bg-dark rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Hybrid Secure File Transfer System</h1>
+        <p class="col-md-8 fs-4">This project demonstrates a secure file transfer system using hybrid encryption (AES+RSA), digital signatures, and an intrusion detection system.</p>
+        <a href="{{ url_for('upload_bp.upload_page') }}" class="btn btn-primary btn-lg" role="button">Get Started</a>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# IDE specific
+.vscode/
+.idea/
+
+# Keys & Sensitive Data
+*.pem
+*.log
+
+# Reports
+storage/reports/
