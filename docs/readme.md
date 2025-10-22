@@ -10,19 +10,4 @@ This project is a secure, user-friendly file transfer system that ensures confid
 - **Web Dashboard**: A Flask-powered web interface allows for easy uploading, verification, and monitoring of security events.
 - **Secure Logging**: Rotates logs to manage disk space and separates access logs from security-critical intrusion logs.
 
----
 
-## Setup and Installation
-
-### 1. Prerequisites
-
-- Python 3.10+
-- `pip` for package management
-
-### 2. Clone the Repository (Initial Setup)
-
-First, clone this repository to your local machine.
-
-```bash
-git clone [your-repo-url]
-cd hybrid-secure-transfer
