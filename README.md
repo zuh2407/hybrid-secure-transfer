@@ -49,9 +49,9 @@ python client/keygen.py
 *This will create `storage/server_private_key.pem` and `storage/server_public_key.pem`.*
 
 ### 5. Start the Server
-Run the Flask application:
+Run the Flask application as a module:
 ```bash
-python run.py
+python -m server.app
 ```
 The server will start on `http://127.0.0.1:5000`.
 
