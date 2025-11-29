@@ -1,7 +1,7 @@
 
 
----
 
+<<<<<<< HEAD
 ```markdown
 # 🛡️ Hybrid Secure File Transfer System
 
@@ -295,3 +295,5 @@ Team Hybrid Secure Transfer
 
 Would you like me to add a short **diagram (ASCII or Mermaid)** visualizing the encryption/decryption workflow inside this README? It would make the project presentation more professional.
 ```
+=======
+>>>>>>> 0163278d72b1b5f20aa3477bed643888dc099acd
