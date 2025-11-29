@@ -1,3 +1,5 @@
 Flask
 cryptography
 pandas
+requests
+python-dotenv

@@ -57,6 +57,8 @@ def log_request_info():
 app.register_blueprint(upload_bp)
 app.register_blueprint(download_bp)
 app.register_blueprint(logs_bp)
+from .routes.ids_routes import ids_bp
+app.register_blueprint(ids_bp)
 
 # --- Main App Routes ---
 @app.route('/')
