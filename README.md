@@ -51,7 +51,7 @@ python client/keygen.py
 ### 5. Start the Server
 Run the Flask application:
 ```bash
-python server/app.py
+python run.py
 ```
 The server will start on `http://127.0.0.1:5000`.
 
