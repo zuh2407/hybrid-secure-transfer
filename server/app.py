@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, request
 import os
 import logging
 from logging.handlers import RotatingFileHandler
@@ -6,7 +6,8 @@ from logging.handlers import RotatingFileHandler
 # Import the Blueprints from the routes package
 from .routes.upload import upload_bp
 from .routes.download import download_bp
-from .routes.logs import logs_bp
+from .routes.ids import ids_bp
+
 
 # --- Setup Secure Logging ---
 log_dir = 'storage/logs/ids'
@@ -41,9 +42,12 @@ intrusion_logger.addFilter(IPFilter())
 # ---------------------
 
 # --- Flask App Initialization ---
-app = Flask(__name__)
+# Point specific static folder to frontend build
+app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['UPLOAD_FOLDER'] = 'storage/encrypted_files'
+app.config['SANDBOX_API_URL'] = 'http://127.0.0.1:8090'
+app.config['DB_PATH'] = 'server/database/file_metadata.db'
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
@@ -56,27 +60,27 @@ def log_request_info():
 # --- Register Blueprints ---
 app.register_blueprint(upload_bp)
 app.register_blueprint(download_bp)
-app.register_blueprint(logs_bp)
+app.register_blueprint(ids_bp)
+
 
 # --- Main App Routes ---
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Serve the React App's index.html
+    return app.send_static_file('index.html')
 
-@app.route('/keys')
-def keys_page():
-    return render_template('keys.html')
+# Removed /keys route as it was template-based. API should handle keys if needed.
 
 # --- Error Handlers ---
 @app.errorhandler(404)
 def page_not_found(e):
     access_logger.warning(f"404 Not Found: {request.path}")
-    return render_template('404.html'), 404
+    return jsonify({'error': 'Not found'}), 404
 
 @app.errorhandler(500)
 def internal_server_error(e):
     intrusion_logger.error(f"500 Internal Error: {request.path} - {e}")
-    return render_template('500.html'), 500
+    return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
     print("Starting Flask server on http://127.0.0.1:5000")

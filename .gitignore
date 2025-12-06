@@ -17,3 +17,11 @@ venv/
 
 # Reports
 storage/reports/
+storage/encrypted_files/
+storage/logs/
+/frontend/node_modules/
+/frontend/build/
+.env
+__pycache__/
+*.sqlite3
+*.db
